@@ -52,16 +52,23 @@ def apply_coupons(cart, coupons)
   # REMEMBER: This method **should** update cart
   index = 0
   while index < coupons.size do
-    item = find_item_by_name_in_collection(name, cart)
-    if coupon_does_apply(item, coupons[index])
+    if coupon_does_apply(cart, coupons[index])
       apply_coupon(cart, coupon)
     end
     index += 1
   end
 end
 
-def coupon_does_apply(item, coupon)
+def coupon_does_apply(cart, coupon)
   # RETURN: true if the coupon works, false otherwise
+  item = find_item_by_name_in_collection(coupon[:item], cart)
+  if(item[:item] == coupon[:item])
+    if(coupon[:num] <= item[:count])
+      return true
+    end
+  end
+  
+  return false
 end
 
 def apply_coupon(cart, coupon)
