@@ -77,15 +77,11 @@ def apply_coupon(cart, coupon)
   # GOAL: Apply the coupon to the cart
   # RETURN: the cart with the applied coupon
   item = find_item_by_name_in_collection(coupon[:item], cart)
-  if(item[:count] == coupon[:num])
-    item[:item] += " W/ COUPON"
-    item[:price] = coupon[:cost]/coupon[:num]
-  else
-    item_with_coupon = consolidate_cart_item(item)
-    item_with_coupon[:item] += " W/ COUPON"
-    item_with_coupon[:price] = coupon[:cost]/coupon[:num]
-    item[:count] -= coupon[:num]
-  end
+
+  item_with_coupon = consolidate_cart_item(item)
+  item_with_coupon[:item] += " W/ COUPON"
+  item_with_coupon[:price] = coupon[:cost]/coupon[:num]
+  item[:count] -= coupon[:num]
   cart
 end
 
