@@ -127,6 +127,8 @@ def checkout(cart, coupons)
     total += con_cart[index][:price] * con_cart[index][:count]
     index += 1
   end
-  
+  if total > 100.00
+    total *= 0.9
+    
   total.round(2)
 end
