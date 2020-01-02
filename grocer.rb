@@ -125,6 +125,7 @@ def checkout(cart, coupons)
   
   while index < cart.size do
     total += cart[index][:price] * cart[index][:count]
+    index += 1
   end
   
   total.round(2)
