@@ -2,6 +2,17 @@ def find_item_by_name_in_collection(name, collection)
   # Implement me first!
   #
   # Consult README for inputs and outputs
+  index = 0
+  result = nil
+  while index < collection.size do
+    if collection[index][:item] == name
+      result = collection[index]
+      break
+    end
+    index += 1
+  end
+  
+  result
 end
 
 def consolidate_cart(cart)
@@ -9,12 +20,53 @@ def consolidate_cart(cart)
   #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  
+  con_cart = []
+  index = 0
+  while index < cart.size do
+    name = cart[index][:item]
+    con_item = find_item_by_name_in_collection(name, con_cart)
+    if con_item == nil
+      con_cart << consolidate_cart_item(cart[index])
+    else
+      con_item[:count] += 1
+    end
+    index += 1
+  end
+  
+  con_cart
+end
+
+def consolidate_cart_item(item)
+  {
+    :item => item[:item],
+    :price => item[:price],
+    :clearance => item[:clearance],
+    :count => 1
+  }
 end
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  index = 0
+  while index < coupons.size do
+    item = find_item_by_name_in_collection(name, cart)
+    if coupon_does_apply(item, coupons[index])
+      apply_coupon(cart, coupon)
+    end
+    index += 1
+  end
+end
+
+def coupon_does_apply(item, coupon)
+  # RETURN: true if the coupon works, false otherwise
+end
+
+def apply_coupon(cart, coupon)
+  # GOAL: Apply the coupon to the cart
+  # RETURN: the cart with the applied coupon
 end
 
 def apply_clearance(cart)
