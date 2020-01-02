@@ -81,7 +81,9 @@ def apply_coupon(cart, coupon)
   item_with_coupon = consolidate_cart_item(item)
   item_with_coupon[:item] += " W/ COUPON"
   item_with_coupon[:price] = coupon[:cost]/coupon[:num]
+  item_with_coupon[:count] = coupon[:num]
   item[:count] -= coupon[:num]
+  
   cart
 end
 
