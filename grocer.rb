@@ -120,7 +120,7 @@ def checkout(cart, coupons)
   apply_coupons(cart, coupons)
   apply_clearance(cart)
   
-  total = 0
+  total = 0.0
   index = 0
   
   while index < cart.size do
