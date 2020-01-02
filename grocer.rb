@@ -57,6 +57,8 @@ def apply_coupons(cart, coupons)
     end
     index += 1
   end
+  
+  cart
 end
 
 def coupon_does_apply(cart, coupon)
@@ -74,6 +76,8 @@ end
 def apply_coupon(cart, coupon)
   # GOAL: Apply the coupon to the cart
   # RETURN: the cart with the applied coupon
+  
+  
 end
 
 def apply_clearance(cart)
